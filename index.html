@@ -1,0 +1,142 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>My Basic Website</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      margin: 0;
+      padding: 0;
+      background: linear-gradient(to right, red, orange, yellow, green, blue, indigo, violet);
+      background-attachment: fixed;
+      background-size: 200% auto;
+      animation: rainbow-animation 10s linear infinite;
+    }
+
+    @keyframes rainbow-animation {
+      0% { background-position: 0 50%; }
+      100% { background-position: 100% 50%; }
+    }
+
+    header {
+      background-color: transparent;
+      color: #fff;
+      padding: 20px;
+      text-align: center;
+    }
+
+    main {
+      padding: 20px;
+      display: flex;
+    }
+
+    .sidebar {
+      border: 2px solid #fff;
+      padding: 20px;
+      margin-right: 20px;
+      width: 200px;
+    }
+
+    #game-container,
+    #weather-widget,
+    #map-container,
+    #clock-widget,
+    #hit-counter {
+      margin-bottom: 20px;
+    }
+
+    /* Custom mouse pointer */
+    body {
+      cursor: url(path/to/custom-cursor.png), auto;
+    }
+  </style>
+  <script>
+    function change(){
+      location.reload()
+    }
+    function fetchJokes() {
+      fetch('https://official-joke-api.appspot.com/random_joke')
+        .then(response => response.json())
+        .then(data => {
+          var jokesContainer = document.getElementById('jokes-container');
+          jokesContainer.innerHTML = '<p><strong>Joke:</strong> ' + data.setup + '</p><p><strong>Punchline:</strong> ' + data.punchline + '</p>';
+        })
+        .catch(error => console.log(error));
+    }
+
+    function displayServerTime() {
+      var serverTimeContainer = document.getElementById('server-time-container');
+      var currentTime = new Date();
+      serverTimeContainer.textContent = 'Server Time: ' + currentTime.toLocaleTimeString();
+    }
+
+    window.addEventListener('DOMContentLoaded', function() {
+      fetchJokes();
+      displayServerTime();
+
+      // Increment and display hit counter
+      var hitCounter = localStorage.getItem('hitCounter');
+      if (hitCounter) {
+        hitCounter = parseInt(hitCounter) + 1;
+      } else {
+        hitCounter = 1;
+      }
+      localStorage.setItem('hitCounter', hitCounter);
+      document.getElementById('hit-counter').textContent = 'Total Hits: ' + hitCounter;
+    });
+
+  </script>
+</head>
+<body>
+  <header>
+    <h1>Welcome to My Basic Website</h1>
+  </header>
+
+  <main>
+    <div class="sidebar">
+      <div id="hit-counter"></div>
+
+      <div id="game-container">
+        <iframe src="game.html" width="200" height="200" frameborder="0"></iframe>
+
+      </div>
+
+      <div id="weather-widget">
+        <div class="weatherIframe">
+							<a href="https://www.accuweather.com/en/us/new-york-ny/10007/weather-forecast/349727" class="aw-widget-legal">
+							</a><div id="awcc1529666196110" class="aw-widget-current lt-216 lt-280 lt-350 lt-479" data-locationkey="" data-unit="c" data-language="en-us" data-useip="true" data-uid="awcc1529666196110" style="display: block;"><style type="text/css">  .aw-icon-1-t {background-image:url(https://vortex.accuweather.com/adc2010/images/icons-numbered/01-t.png)} .aw-icon-1-h {background-image:url(https://vortex.accuweather.com/adc2010/images/icons-numbered/01-h.png)} .aw-icon-1-s {background-image:url(https://vortex.accuweather.com/adc2010/images/icons-numbered/01-s.png)} .aw-icon-1-m {background-image:url(https://vortex.accuweather.com/adc2010/images/icons-numbered/01-m.png)} .aw-icon-1-l {background-image:url(https://vortex.accuweather.com/adc2010/images/icons-numbered/01-l.png)} .aw-icon-1-xl {background-image:url(https://vortex.accuweather.com/adc2010/images/icons-numbered/01-xl.png)} @-webkit-keyframes marqueeAnimation-8173702  { 100%  {margin-left:-2107px}}</style><script type="text/javascript">      var awxWidgetInfo = awxWidgetInfo || {};      awxWidgetInfo.awcc1529666196110 = {};      awxWidgetInfo.awcc1529666196110.userInfo = {      country: 'US',          city: "Sacramento",      state: 'CA',      metro: 'SAC',      zip: '95814',      fcode: 'SACD',      partner: 'accuweather',      sessionPartner: 'accuweather',      referer: 'https://badhtml.com/',      lang: 'en-us',      langid: '1',      lat: '38.582',      lon: '-121.494',      dma: '862',      ip: '174.195.136.83',      ipLocation: '',      sessionViews: 0,      geo_dma: '862',      geo_city: 'Sacramento',      geo_state: 'CA',      geo_zip: '95814',      geo_country: 'US'      };      awxWidgetInfo.awcc1529666196110.wxInfo = {      nwsalrt: '',          hdln: '',      ut: '',      cu: { wx: '', hi: '', wd: '', hd: '', uv: '' },      fc: [{wx: '', hi: '', lo: ''}],          ix: {},      mcpct: "1"        };</script><div class="aw-widget-current-inner"><div class="aw-widget-content bg-su"><a id="link_current" href="https://www.accuweather.com/en/us/sacramento-ca/95814/weather-forecast/347627?utm_source=badhtml-com&amp;utm_medium=oap_weather_widget&amp;utm_term=link_current&amp;utm_content=accuweather&amp;utm_campaign=current" target="_blank" class="aw-current-weather"><div class="aw-current-weather-inner"><h3>Sacramento, CA</h3><span class="aw-icon aw-icon-1-m" data-icon="1"></span><p class="aw-temp-time-desc"><span class="aw-temperature-today"><b>30<sup>°</sup></b></span><time>7:25 pm PDT</time>    				<span class="aw-weather-description">Sunny</span></p></div>        		</a></div><a id="link_get_widget" href="https://www.accuweather.com/en/free-weather-widgets?utm_source=badhtml-com&amp;utm_medium=oap_weather_widget&amp;utm_term=link_get_widget&amp;utm_content=accuweather&amp;utm_campaign=current" target="_blank" class="aw-toggle"><i>Get this widget</i></a><div class="aw-get-widget-footer"><p class="aw-get-info">Want weather on your site?</p><a id="link_get_widget_footer" href="https://www.accuweather.com/en/free-weather-widgets?utm_source=badhtml-com&amp;utm_medium=oap_weather_widget&amp;utm_term=link_get_widget_footer&amp;utm_content=accuweather&amp;utm_campaign=current" target="_blank" class="aw-get-this-widget"><i class="aw-get-widget-icon"></i><span>Get widget</span></a></div></div>  </div><script src="https://oap.accuweather.com/launch.js"></script>
+						</div>
+      </div>
+
+      <div id="map-container">
+        <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3152.0275207062396!2d-122.41941568470441!3d37.77492957975737!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x808580833c96b939%3A0xd3f24ab581e7b345!2sGolden%20Gate%20Bridge!5e0!3m2!1sen!2sus!4v1609360520428!5m2!1sen!2sus" width="200" height="200" style="border:0;" allowfullscreen="" loading="lazy"></iframe>
+      </div>
+
+      <div id="clock-widget">
+        <iframe src="https://free.timeanddate.com/clock/i7jmsa30/n202/fs16/fcfff/tct/pct/ftb/pa8/tt0/tm3/th2/tb4" frameborder="0" width="223" height="43"></iframe>
+      </div>
+    </div>
+
+    <div>
+      <h2>About</h2>
+      <p>This is a super barebones basic website.</p>
+
+      <div id="jokes-container"></div>
+      <button type="button" onclick="change()">Change joke</button>
+
+      
+
+      <div id="server-time-container"></div>
+
+      <video autoplay controlslist="nodownload">
+        <source src="path/to/video.mp4" type="video/mp4">
+        Your browser does not support the video tag.
+      </video>
+    </div>
+  </main>
+
+  <footer>
+    <p>&copy; 2023 My Basic Website. All rights reserved.</p>
+  </footer>
+</body>
+</html>
