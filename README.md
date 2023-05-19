@@ -1,1 +1,3 @@
-Hello nothing to see here also their are no virisuses in this you can check the code
+#Ansel Look Here!!!!!!!!!!!!!!!
+in the index.html don't add any geolocation things they are already their
+Use getLocation()
