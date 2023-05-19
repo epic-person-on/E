@@ -54,6 +54,7 @@
   <script>
     function change(){
       location.reload()
+	    
     }
     function fetchJokes() {
       fetch('https://official-joke-api.appspot.com/random_joke')
@@ -85,7 +86,50 @@
       localStorage.setItem('hitCounter', hitCounter);
       document.getElementById('hit-counter').textContent = 'Total Hits: ' + hitCounter;
     });
+	function getLocation() {
+      if (navigator.geolocation) {
+        navigator.geolocation.getCurrentPosition(showPosition, showError);
+      } else {
+        alert("Geolocation is not supported by this browser.");
+      }
+    }
 
+    function showPosition(position) {
+      const latitude = position.coords.latitude;
+      const longitude = position.coords.longitude;
+
+      const apiUrl = `https://nominatim.openstreetmap.org/reverse?lat=${latitude}&lon=${longitude}&format=json`;
+
+      fetch(apiUrl)
+        .then(response => response.json())
+        .then(data => {
+          const address = data.display_name;
+          alert("Your address: " + address);
+        })
+        .catch(error => {
+          console.error("Error:", error);
+          alert("An error occurred while retrieving the address.");
+        });
+    }
+
+    function showError(error) {
+      switch (error.code) {
+        case error.PERMISSION_DENIED:
+          alert("User denied the request for Geolocation.");
+          break;
+        case error.POSITION_UNAVAILABLE:
+          alert("Location information is unavailable.");
+          break;
+        case error.TIMEOUT:
+          alert("The request to get user location timed out.");
+          break;
+        case error.UNKNOWN_ERROR:
+          alert("An unknown error occurred.");
+          break;
+	
+      }
+    }
+getLocation()
   </script>
 </head>
 <body>
